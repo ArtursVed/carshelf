@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/templates/main.xhtml">
+    <ui:define name="content">
+
+        <h:form id="new-car-form">
+            <ui:fragment rendered="#{createCarBean.created}">
+                <h2>Car created successfully</h2>
+            </ui:fragment>
+            <p>
+                <h:outputLabel value="Type:"/>
+                <h:inputText id="type" value="#{createCarBean.car.type}"/>
+                <h:messages for="type"/>
+            </p>
+            <p>
+                <h:outputLabel value="Fuel:"/>
+                <h:inputText id="fuel" value="#{createCarBean.car.fuel}"/>
+                <h:messages for="fuel"/>
+            </p>
+            <p>
+                <h:outputLabel value="Number:"/>
+                <h:inputText id="number" value="#{createCarBean.car.number}"/>
+                <h:messages for="number"/>
+            </p>
+            <p>
+                <h:outputLabel value="Year:"/>
+                <h:inputText id="year" value="#{createCarBean.car.year}"/>
+                <h:messages for="year"/>
+            </p>
+            <p>
+                <h:outputLabel value="Cost:"/>
+                <br/>
+                <h:inputTextarea id="Cost"
+                                 value="#{createCarBean.car.cost}"/>
+                <h:messages for="Cost"/>
+            </p>
+            <p>
+                <h:commandButton action="#{createCarBean.createCar}"
+                                 value="Create">
+                    <f:ajax render="@form" execute="@form"/>
+                </h:commandButton>
+            </p>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+
+</html>
