@@ -32,6 +32,12 @@
                     <f:facet name="header">Type</f:facet>
                     #{car.type}
                 </h:column>
+                <h:column>
+                    <f:facet name="header">link</f:facet>
+                    <h:outputLink value="car.xhtml">open
+                        <f:param name="id" value="#{car.id}"/>
+                    </h:outputLink>
+                </h:column>
             </h:dataTable>
 
         </h:form>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/templates/main.xhtml">
+    <ui:define name="content">
+
+        <f:metadata>
+            <f:viewParam name="id" value="#{singleCarBean.id}"/>
+            <f:viewAction action="#{singleCarBean.openCar}"/>
+        </f:metadata>
+
+        <h1>#{singleCarBean.car.type}</h1>
+
+        <table>
+            <tr>
+                <td>id</td>
+                <td>#{singleCarBean.car.id}</td>
+            </tr>
+            <tr>
+                <td>number</td>
+                <td>#{singleCarBean.car.number}</td>
+            </tr>
+            <tr>
+                <td>fuel</td>
+                <td>#{singleCarBean.car.fuel}</td>
+            </tr>
+            <tr>
+                <td>year</td>
+                <td>#{singleCarBean.car.year}</td>
+            </tr>
+            <tr>
+                <td>cost</td>
+                <td>#{singleCarBean.car.cost}</td>
+            </tr>
+        </table>
+
+        <h:form>
+            <h:commandButton value="Reserve for me"
+                             action="#{carReservationBean.reserve(singleCarBean.id)}"/>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+</html>
