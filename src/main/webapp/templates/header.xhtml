@@ -3,8 +3,21 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<style>
+    body {
+        background-image: url("car.png");
+    }
+</style>
+
+
 <ui:composition>
     <h:form>
+    <H1 style="font-size: 36px; font-family: Times, serif; color: red;">ONLINE CAR SHOP!</H1>
+        <p><img src="img_car.jpg" alt="car"/></p>
+    </h:form>
+
+    <h:form>
+
         <ul>
             <ui:fragment rendered="#{request.isUserInRole('USER')}">
                 <li><h:link value="User space" outcome="/app/index.xhtml"/></li>
@@ -25,4 +38,5 @@
         </ul>
     </h:form>
 </ui:composition>
+
 </html>
