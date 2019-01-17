@@ -12,6 +12,7 @@
 
 <body>
 <ui:composition template="/templates/main.xhtml">
+
     <ui:define name="content">
 
         <h:form>
@@ -20,11 +21,16 @@
             <h:commandButton value="Search" action="#{carBean.doSearch}">
                 <f:ajax execute="@form" render="@form"/>
             </h:commandButton>
-
             <h:outputLabel value="Not found"
                            rendered="#{empty carBean.car}"/>
-            <h:dataTable value="#{carBean.car}" var="car"
+            <p> </p>
+
+
+            <p align="center" style="color: red"> AUTO OFFER </p>
+
+            <h:dataTable width="60%" border="1" cellspacing="0"  cellpadding="4 " value="#{carBean.car}" var="car"
                          rendered="#{not empty carBean.car}">
+
                 <h:column>
                     <f:facet name="header">Id</f:facet>
                     #{car.id}

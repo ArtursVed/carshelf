@@ -35,6 +35,9 @@ public class CarEntity implements Serializable {
     @Column(name="cost", length = 1000)
     private String cost ;
 
+    @Column(name="image")
+    private String image;
+
     public Long getId() {
         return id;
     }
@@ -81,5 +84,13 @@ public class CarEntity implements Serializable {
 
     public void setCost(String cost) {
         this.cost = cost;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

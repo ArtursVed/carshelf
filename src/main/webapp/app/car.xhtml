@@ -15,7 +15,7 @@
 
         <h1>#{singleCarBean.car.type}</h1>
 
-        <table>
+        <table border="1" width="50%" cellpadding="5">
             <tr>
                 <td>id</td>
                 <td>#{singleCarBean.car.id}</td>
@@ -36,11 +36,17 @@
                 <td>cost</td>
                 <td>#{singleCarBean.car.cost}</td>
             </tr>
+            <tr>
+                <td>image</td>
+                <td>#{singleCarBean.car.image}</td>
+            </tr>
         </table>
-        <tr>    </tr>
+
         <h:form>
+            <p>
             <h:commandButton value="Reserve for me"
                              action="#{carReservationBean.reserve(singleCarBean.id)}"/>
+            </p>
         </h:form>
 
     </ui:define>
