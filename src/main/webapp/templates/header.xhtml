@@ -7,12 +7,13 @@
 
 
 <ui:composition>
-    <h:form>
-    <H1 style="font-size: 36px; font-family: Times, serif; color: red;">ONLINE CAR SHOP!</H1>
-    <h:graphicImage value="resources/car.png"/>
-    </h:form>
+
 
     <h:form>
+
+        <H1 style="font-size: 36px; font-family: Times, serif; color: red;">ONLINE CAR SHOP!</H1>
+
+        <h:graphicImage value="resources/car.png" width="350" height="250"/>
 
         <ul>
             <ui:fragment rendered="#{request.isUserInRole('USER')}">
