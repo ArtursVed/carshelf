@@ -17,19 +17,20 @@
 
         <h:form>
 
-            <h:inputText value="#{carBean.term}"/>
-            <h:commandButton value="Search" action="#{carBean.doSearch}">
+            <h:inputText value="#{carsListBean.term}"/>
+            <h:commandButton value="Search" action="#{carsListBean.doSearch}">
                 <f:ajax execute="@form" render="@form"/>
             </h:commandButton>
             <h:outputLabel value="Not found"
-                           rendered="#{empty carBean.car}"/>
-            <p> </p>
+                           rendered="#{empty carsListBean.car}"/>
+
+                      <p> </p>
 
 
             <p align="center" style="color: red"> AUTO OFFER </p>
 
-            <h:dataTable width="60%" border="1" cellspacing="0"  cellpadding="4 " value="#{carBean.car}" var="car"
-                         rendered="#{not empty carBean.car}">
+            <h:dataTable width="60%" border="1" cellspacing="0" cellpadding="4 " value="#{carsListBean.car}" var="car"
+                         rendered="#{not empty carsListBean.car}">
 
                 <h:column>
                     <f:facet name="header">Id</f:facet>

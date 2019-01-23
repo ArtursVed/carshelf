@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 @ViewScoped
 @Named
-public class CreateCarBean implements Serializable {
+public class NewCarBean implements Serializable {
     @PersistenceContext
     private EntityManager em;
     private CarEntity car = new CarEntity();

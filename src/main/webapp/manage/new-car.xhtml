@@ -8,38 +8,38 @@
     <ui:define name="content">
 
         <h:form id="new-car-form">
-            <ui:fragment rendered="#{createCarBean.created}">
+            <ui:fragment rendered="#{newCarBean.created}">
                 <h2>Car created successfully</h2>
             </ui:fragment>
             <p>
                 <h:outputLabel value="Type:"/>
-                <h:inputText id="type" value="#{createCarBean.car.type}"/>
+                <h:inputText id="type" value="#{newCarBean.car.type}"/>
                 <h:messages for="type"/>
             </p>
             <p>
                 <h:outputLabel value="Fuel:"/>
-                <h:inputText id="fuel" value="#{createCarBean.car.fuel}"/>
+                <h:inputText id="fuel" value="#{newCarBean.car.fuel}"/>
                 <h:messages for="fuel"/>
             </p>
             <p>
                 <h:outputLabel value="Number:"/>
-                <h:inputText id="number" value="#{createCarBean.car.number}"/>
+                <h:inputText id="number" value="#{newCarBean.car.number}"/>
                 <h:messages for="number"/>
             </p>
             <p>
                 <h:outputLabel value="Year:"/>
-                <h:inputText id="year" value="#{createCarBean.car.year}"/>
+                <h:inputText id="year" value="#{newCarBean.car.year}"/>
                 <h:messages for="year"/>
             </p>
             <p>
                 <h:outputLabel value="Cost:"/>
                 <br/>
                 <h:inputTextarea id="Cost"
-                                 value="#{createCarBean.car.cost}"/>
+                                 value="#{newCarBean.car.cost}"/>
                 <h:messages for="Cost"/>
             </p>
             <p>
-                <h:commandButton action="#{createCarBean.createCar}"
+                <h:commandButton action="#{newCarBean.createCar}"
                                  value="Create">
                     <f:ajax render="@form" execute="@form"/>
                 </h:commandButton>

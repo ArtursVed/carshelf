@@ -17,6 +17,7 @@ public class ReservationEntity implements Serializable {
     @ManyToOne
     private UserEntity user;
     @Column
+    @Enumerated(EnumType.STRING)
     private ReservationStatus status;
     @Column
     private LocalDateTime created;
@@ -38,7 +39,7 @@ public class ReservationEntity implements Serializable {
         return car;
     }
 
-    public void setCar(CarEntity car) {
+    public void setBook(CarEntity car) {
         this.car = car;
     }
 
@@ -64,5 +65,8 @@ public class ReservationEntity implements Serializable {
 
     public void setCreated(LocalDateTime created) {
         this.created = created;
+    }
+
+    public void setCar(CarEntity car) {
     }
 }

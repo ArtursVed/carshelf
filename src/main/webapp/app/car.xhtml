@@ -9,44 +9,42 @@
     <ui:define name="content">
 
         <f:metadata>
-            <f:viewParam name="id" value="#{singleCarBean.id}"/>
-            <f:viewAction action="#{singleCarBean.openCar}"/>
+            <f:viewParam name="id" value="#{carBean.id}"/>
+            <f:viewAction action="#{carBean.openCar}"/>
         </f:metadata>
 
-        <h1>#{singleCarBean.car.type}</h1>
+        <h1>#{carBean.car.type}</h1>
 
         <table border="1" width="50%" cellpadding="5">
             <tr>
                 <td>id</td>
-                <td>#{singleCarBean.car.id}</td>
+                <td>#{carBean.car.id}</td>
             </tr>
             <tr>
                 <td>number</td>
-                <td>#{singleCarBean.car.number}</td>
+                <td>#{carBean.car.number}</td>
             </tr>
             <tr>
                 <td>fuel</td>
-                <td>#{singleCarBean.car.fuel}</td>
+                <td>#{carBean.car.fuel}</td>
             </tr>
             <tr>
                 <td>year</td>
-                <td>#{singleCarBean.car.year}</td>
+                <td>#{carBean.car.year}</td>
             </tr>
             <tr>
                 <td>cost</td>
-                <td>#{singleCarBean.car.cost}</td>
+                <td>#{carBean.car.cost}</td>
             </tr>
             <tr>
                 <td>image</td>
-                <td><h:graphicImage library="images" name="#{singleCarBean.car.image}"/></td>
+                <td><h:graphicImage library="images" name="#{carBean.car.image}"/></td>
             </tr>
         </table>
 
         <h:form>
-            <p>
             <h:commandButton value="Reserve for me"
-                             action="#{carReservationBean.reserve(singleCarBean.id)}"/>
-            </p>
+                             action="#{carBean.reserve(carBean.id)}"/>
         </h:form>
 
     </ui:define>
