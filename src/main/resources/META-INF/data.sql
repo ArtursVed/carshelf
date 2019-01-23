@@ -6,6 +6,6 @@ insert into cars (id, type, number, fuel, year , cost , image) values (2, 'VOLVO
 insert into cars (id, type, number, fuel, year , cost , image) values (3, 'VW','LV6666','diesel', 2018, 25000 ,'vw.jpg')
 insert into cars (id, type, number, fuel, year , cost , image) values (4, 'MAZDA3','GR5382','Petrol', 2007, 6000 , 'mazda.jpg')
 insert into cars (id, type, number, fuel, year , cost , image) values (5, 'MITSUBISHI OUTLANDER','HS1900','Petrol', 2011, 11000 , 'mitsubishi.jpg')
-insert into cars (id, type, number, fuel, year , cost , image) values (6, 'VOLVO XS','OM5261','diesel', 2015, 15000 , 'car.png' )
+insert into cars (id, type, number, fuel, year , cost , image) values (6, 'VOLVO XS','OM5261','diesel', 2015, 15000 , 'volvo.jpg' )
 
 insert into reservations (id, user_id, car_id, status, created) values (-1, -1, -1, 'TAKEN', '2019-01-17')
