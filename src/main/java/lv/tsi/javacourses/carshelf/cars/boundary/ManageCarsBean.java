@@ -1,15 +1,15 @@
 package lv.tsi.javacourses.carshelf.cars.boundary;
 
-
-import lv.tsi.javacourses.carshelf.auth.boundary.CurrentUser;
 import lv.tsi.javacourses.carshelf.cars.model.CarEntity;
 import lv.tsi.javacourses.carshelf.cars.model.ReservationEntity;
+import lv.tsi.javacourses.carshelf.cars.model.ReservationStatus;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,24 +17,17 @@ import java.util.Optional;
 
 @Named
 @ViewScoped
-public class MyCarsBean implements Serializable {
+public class ManageCarsBean implements Serializable {
     @PersistenceContext
     private EntityManager em;
-    @Inject
-    private CurrentUser currentUser;
     private List<ReservationEntity> availableResult;
-    private List<ReservationEntity> inQueueResult;
     private List<ReservationEntity> takenResult;
-    private List<CarEntity> historyResult;
-
 
     public void prepare() {
         availableResult = new ArrayList<>();
-        inQueueResult = new ArrayList<>();
         List<ReservationEntity> userReservations = em.createQuery(
                 "select r from Reservation r " +
-                        "where r.user = :user and r.status = 'ACTIVE'", ReservationEntity.class)
-                .setParameter("user", currentUser.getUser())
+                        "where r.status = 'ACTIVE'", ReservationEntity.class)
                 .getResultList();
 
         for (ReservationEntity r : userReservations) {
@@ -48,35 +41,35 @@ public class MyCarsBean implements Serializable {
                     .findFirst();
             if (firstReservation.isEmpty() || firstReservation.get().getId().equals(reservationId)) {
                 availableResult.add(r);
-            } else {
-                inQueueResult.add(r);
             }
         }
 
         takenResult = em.createQuery("select r from Reservation r " +
-                "where r.user = :user and r.status = 'TAKEN'", ReservationEntity.class)
-                .setParameter("user", currentUser.getUser())
-                .getResultList();
-
-        historyResult = em.createQuery("select distinct r.car from Reservation r " +
-                "where r.user = :user and r.status = 'CLOSED'", CarEntity.class)
-                .setParameter("user", currentUser.getUser())
+                "where r.status = 'TAKEN'", ReservationEntity.class)
                 .getResultList();
     }
+
+    @Transactional
+    public void giveCar(ReservationEntity reservation) {
+        ReservationEntity r = em.merge(reservation);
+        r.setStatus(ReservationStatus.TAKEN);
+        prepare();
+    }
+
+    @Transactional
+    public void takeCar(ReservationEntity reservation) {
+        ReservationEntity r = em.merge(reservation);
+        r.setStatus(ReservationStatus.CLOSED);
+        prepare();
+    }
+
 
     public List<ReservationEntity> getAvailableCars() {
         return availableResult;
-    }
-
-    public List<ReservationEntity> getInQueueCars() {
-        return inQueueResult;
     }
 
     public List<ReservationEntity> getTakenCars() {
         return takenResult;
     }
 
-    public List<CarEntity> getHistoryCars() {
-        return historyResult;
-    }
 }

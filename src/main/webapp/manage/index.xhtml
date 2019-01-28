@@ -1,17 +1,70 @@
-<!--
-  ~ Copyright (c) 2018 Dimitrijs Fedotovs
-  ~ This code is licensed under MIT license
-  ~ (see LICENSE.txt for details)
-  -->
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <ui:composition template="/templates/main.xhtml">
     <ui:define name="content">
-        <h:outputLabel value="Manager's space"/>
+
+        <f:metadata>
+            <f:viewAction action="#{manageCarsBean.prepare}"/>
+        </f:metadata>
+
+        <h:form>
+            <h2>Ready reservations</h2>
+            <h:dataTable value="#{managecarsBean.availableCars}"
+                         var="res"
+                         styleClass="w3-table w3-table-all">
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    #{res.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Car Type</f:facet>
+                    #{res.book.title}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">User Name</f:facet>
+                    #{res.user.loginName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandButton action="#{manageCarsBean.giveCar(res)}"
+                                     value="Give out"
+                                     styleClass="w3-button w3-orange">
+                        <f:ajax render="@form" execute="@form"/>
+                    </h:commandButton>
+                </h:column>
+            </h:dataTable>
+
+            <h2>Taken Cars</h2>
+            <h:dataTable value="#{managecarsBean.takenCars}"
+                         var="res"
+                         styleClass="w3-table w3-table-all">
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    #{res.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Car Type</f:facet>
+                    #{res.car.type}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">User Name</f:facet>
+                    #{res.user.loginName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandButton action="#{manageCarsBean.takeCar(res)}"
+                                     value="Take back"
+                                     styleClass="w3-button w3-orange">
+                        <f:ajax render="@form" execute="@form"/>
+                    </h:commandButton>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+
     </ui:define>
 </ui:composition>
 

@@ -10,7 +10,7 @@
             <f:viewAction action="#{myCarsBean.prepare}"/>
         </f:metadata>
 
-        <h2>Available books</h2>
+        <h2>Available cars</h2>
         <h:dataTable value="#{myCarsBean.availableCars}"
                      var="res">
             <h:column>
@@ -70,6 +70,19 @@
             <h:column>
                 <f:facet name="header">User Name</f:facet>
                 #{res.user.loginName}
+            </h:column>
+        </h:dataTable>
+        <h2>Cars history</h2>
+        <h:dataTable value="#{myCarsBean.historyCars}"
+                     var="car"
+                     styleClass="w3-table w3-table-all">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{car.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Type</f:facet>
+                #{car.type}
             </h:column>
         </h:dataTable>
 
