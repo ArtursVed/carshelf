@@ -62,5 +62,27 @@ public class CarsDeleteBean  implements Serializable {
 
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public CarEntity getCar() {
+        return car;
+    }
+
+    public void setCar(CarEntity car) {
+        this.car = car;
+    }
+
+    public List<String> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<String> cars) {
+        this.cars = cars;
+    }
 }
