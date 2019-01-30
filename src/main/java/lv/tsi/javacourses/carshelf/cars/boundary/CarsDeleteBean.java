@@ -21,20 +21,22 @@ public class CarsDeleteBean  implements Serializable {
     private String term;
     private Long id;
     private CarEntity car;
+    private List<String> cars;
 
 
     @Transactional
     public void deleteCars(String c) {
         System.out.println("delete method executed");
-        Long c_id = ((Long) em.createQuery("select c.id from Car c where c.type = :car")
-                .setParameter("car", c)
+        Long c_id = ((Long) em.createQuery("select c.id from Car where c.type = :type")
+                .setParameter("type", c)
 
                 .getSingleResult());
-        CarEntity car = em.find(CarEntity.class, id);
 
-        Query car_type = em.createNativeQuery("DELETE FROM CARSHELF_DB.PUBLIC.CARS where TYPE  = " + c_id);
+        CarEntity type = em.find(CarEntity.class, c_id);
 
-        car_type.executeUpdate();
+        Query q = em.createNativeQuery("DELETE FROM CARSHELF_DB.PUBLIC.CARS where TYPE  = " + c_id);
+
+        q.executeUpdate();
     }
 
 
