@@ -22,6 +22,7 @@
             <ui:fragment rendered="#{request.isUserInRole('MANAGER')}">
                 <h:link value="Manager space" outcome="/manage/index.xhtml" styleClass="w3-bar-item w3-button"/>
                 <h:link value="Create Car" outcome="/manage/new-car.xhtml" styleClass="w3-bar-item w3-button"/>
+                <h:link value="Delete Car" outcome="/manage/delete-car.xhtml" styleClass="w3-bar-item w3-button"/>
             </ui:fragment>
             <ui:fragment rendered="#{request.isUserInRole('ADMIN')}">
                 <h:link value="Admin space" outcome="/admin/index.xhtml" styleClass="w3-bar-item w3-button"/>

@@ -79,6 +79,8 @@ public class ManageCarsBean implements Serializable {
     }
 
 
+
+
     public List<ReservationEntity> getAvailableCars() {
         return availableResult;
     }

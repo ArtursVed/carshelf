@@ -106,4 +106,5 @@ public class CarEntity implements Serializable {
                 ", image='" + image + '\'' +
                 '}';
     }
+
 }
