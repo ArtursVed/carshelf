@@ -93,4 +93,17 @@ public class CarEntity implements Serializable {
     public void setImage(String image) {
         this.image = image;
     }
+
+    @Override
+    public String toString() {
+        return "CarEntity{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", number='" + number + '\'' +
+                ", fuel='" + fuel + '\'' +
+                ", year=" + year +
+                ", cost='" + cost + '\'' +
+                ", image='" + image + '\'' +
+                '}';
+    }
 }

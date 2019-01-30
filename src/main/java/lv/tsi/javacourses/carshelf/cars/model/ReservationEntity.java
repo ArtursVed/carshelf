@@ -69,4 +69,15 @@ public class ReservationEntity implements Serializable {
 
     public void setCar(CarEntity car) {
     }
+
+    @Override
+    public String toString() {
+        return "ReservationEntity{" +
+                "id=" + id +
+                ", car=" + car +
+                ", user=" + user +
+                ", status=" + status +
+                ", created=" + created +
+                '}';
+    }
 }
