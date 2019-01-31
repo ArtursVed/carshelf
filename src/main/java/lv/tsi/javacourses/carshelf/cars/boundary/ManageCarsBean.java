@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,6 +32,8 @@ public class ManageCarsBean implements Serializable {
     private EntityManager em;
     private List<ReservationEntity> availableResult;
     private List<ReservationEntity> takenResult;
+
+
 
     public void prepare() {
         logger.debug("Preparing cars for manager");
@@ -77,6 +80,7 @@ public class ManageCarsBean implements Serializable {
         r.setStatus(ReservationStatus.CLOSED);
         prepare();
     }
+
 
 
 

@@ -45,6 +45,8 @@ public class CarBean implements Serializable {
         em.persist(reservation);
     }
 
+
+
     public CarEntity getCar() {
         return car;
     }
