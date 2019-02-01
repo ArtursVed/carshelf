@@ -11,10 +11,6 @@
 
                <h:form>
 
-
-
-
-
             <h:dataTable width="60%" border="1" cellspacing="0" cellpadding="4 " value="#{carsListBean.car}" var="car"
                          rendered="#{not empty carsListBean.car}"
                          styleClass="w3-table w3-table-all">
@@ -29,7 +25,8 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">delete</f:facet>
-                    <h:commandButton value="DELETE" action="#{carsListBean.deleteFromCars(car)}">
+
+                    <h:commandButton value="DELETE" action="#{carsListBean.deletecars(carsListBean.id)}">
 
 
                     </h:commandButton>

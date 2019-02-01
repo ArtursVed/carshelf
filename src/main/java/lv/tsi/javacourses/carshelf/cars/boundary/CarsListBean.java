@@ -19,6 +19,8 @@ public class CarsListBean implements Serializable {
     private EntityManager em;
     private String term;
     private List<String> cars;
+    private Long id;
+
 
 
     public List<CarEntity> getCar() {
@@ -32,28 +34,13 @@ public class CarsListBean implements Serializable {
     }
 
     @Transactional
-    public void deleteFromCars(String car) {
-        System.out.println("delete method executed");
-        Long car_id = ((Long) em.createQuery("select c.id from Car  c where c.id = id  and  c.type= :type")
-                .setParameter("car", car)
-                .getSingleResult());
-        CarEntity cars = em.find(CarEntity.class, car_id);
-        Query q = em.createNativeQuery("DELETE FROM CARS where ID = " + car_id);
-        q.executeUpdate();
+    public void deletecars(Long id) {
+        Query query = em.createQuery("DELETE FROM Car c WHERE c.id =" + id);
+        query.executeUpdate();
     }
 
 
-   // public String removeCar(){
 
-     //   em.remove(term);
-
-     //   Query q = em.createNativeQuery("DELETE FROM CARSHELF_DB.PUBLIC.CARS where ID = " + term   );
-
-      //  q.executeUpdate();
-
-    //    return null;
-
- //   }
 
 
     public List<String> getCars() {
@@ -83,4 +70,15 @@ public class CarsListBean implements Serializable {
     public void setEm(EntityManager em) {
         this.em = em;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
+
+
+
