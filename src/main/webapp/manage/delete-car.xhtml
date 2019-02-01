@@ -24,11 +24,10 @@
                     #{car.type}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">delete</f:facet>
-
-                    <h:commandButton value="DELETE" action="#{carsListBean.deletecars(carsListBean.id)}">
-
-
+                    <f:facet name="header">Delete</f:facet>
+                    <h:commandButton value="DELETE" action="#{carsListBean.deletecars}">
+                        <f:setPropertyActionListener value="#{car.id}" target="#{carsListBean.id}"/>
+                        <f:ajax render="@form" execute="@form"/>
                     </h:commandButton>
                 </h:column>
             </h:dataTable>
